@@ -243,6 +243,8 @@ export function extractVerificationCode({ subject = '', text = '', html = '' } =
     body: `${textBody} ${htmlBody}`.trim()
   };
 
+  const xaiMatch = sources.subject.match(/\b([A-Z0-9]{3,4}-[A-Z0-9]{3,4})\b/i);
+  if (xaiMatch) return xaiMatch[1].toUpperCase();
   const minLen = 4;
   const maxLen = 8;
 
